@@ -7,7 +7,7 @@ function RTD(max) {
 function DiceRoller(props) {
     return (
         <div>
-            <button onClick={RTD(props.dice)}>Roll a D{props.dice}</button>
+            <button onClick={() => RTD(props.dice)}>Roll a D{props.dice}</button>
         </div>
     )
 }
