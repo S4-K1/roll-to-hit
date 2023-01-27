@@ -10,7 +10,7 @@ function App() {
         <div>
           <Board />
         </div>
-        <div>
+        <div className="diceContainer">
           <DiceRoller dice={4} />
           <DiceRoller dice={6} />
           <DiceRoller dice={8} />

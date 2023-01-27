@@ -1,0 +1,16 @@
+.diceRollBox {
+    background-color: blanchedalmond;
+    background-image: url('../../resources/d20Icon.png');
+    height: 35px;
+    width: 35px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.diceRollButton {
+    background: none;
+    border: none;
+}

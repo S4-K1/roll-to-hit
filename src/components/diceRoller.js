@@ -1,4 +1,5 @@
 import React from "react";
+import './css/diceRoller.css'
 
 function RTD(max) {
     console.log(1 + Math.floor(Math.random() * max))
@@ -6,8 +7,8 @@ function RTD(max) {
 
 function DiceRoller(props) {
     return (
-        <div>
-            <button onClick={() => RTD(props.dice)}>Roll a D{props.dice}</button>
+        <div className="diceRollBox">
+            <button className="diceRollButton" onClick={() => RTD(props.dice)}>{props.dice}</button>
         </div>
     )
 }
