@@ -1,0 +1,20 @@
+.chatWindow {
+    display: flex;
+    border-color: black;
+    border-bottom-style: solid;
+    height: 75vh;
+}
+
+.writeWindow {
+    display: flex;
+    font-size: calc(5px + 2vmin);
+    height: 25vh;
+}
+
+.submitBox {
+    width: 25%;
+}
+
+.writeBox {
+    width: 75%;
+}
