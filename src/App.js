@@ -1,9 +1,18 @@
+import React, {useState} from 'react';
 import Board from './components/board'
 import './App.css';
 import DiceRoller from './components/diceRoller';
 import ChatWindow from './components/chatWindow';
 
 function App() {
+
+  const [chat, setChat] = useState("")
+
+  function updateChat (update) {
+    setChat(chat + update + ";")
+  }
+
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -15,18 +24,18 @@ function App() {
                 <Board />
               </div>
               <div className="diceContainer">
-                <DiceRoller dice={4} />
-                <DiceRoller dice={6} />
-                <DiceRoller dice={8} />
-                <DiceRoller dice={10} />
-                <DiceRoller dice={12} />
-                <DiceRoller dice={20}/>
+                <DiceRoller dice={4} roll={updateChat} />
+                <DiceRoller dice={6} roll={updateChat}/>
+                <DiceRoller dice={8} roll={updateChat}/>
+                <DiceRoller dice={10} roll={updateChat}/>
+                <DiceRoller dice={12} roll={updateChat}/>
+                <DiceRoller dice={20} roll={updateChat}/>
               </div>
             </div>
           </div>
         </div>
         <div className="rightSideMenu">
-          <ChatWindow />
+          <ChatWindow chat={chat} />
         </div>
       </header>
     </div>
