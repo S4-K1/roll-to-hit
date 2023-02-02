@@ -18,10 +18,11 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "portsoc",
+    "root": true,
+    "env": {
+      "browser": true
+    }
   },
   "browserslist": {
     "production": [
@@ -34,5 +35,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "eslint-config-portsoc": "^1.0.1"
   }
 }
