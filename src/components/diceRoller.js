@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './css/diceRoller.css';
 
 function DiceRoller(props) {
@@ -13,5 +14,11 @@ function DiceRoller(props) {
     </div>
   );
 }
+
+DiceRoller.propTypes = {
+  roll: PropTypes.func,
+  dice: PropTypes.number,
+};
+
 
 export default DiceRoller;

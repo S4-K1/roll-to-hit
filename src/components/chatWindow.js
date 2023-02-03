@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './css/chatWindow.css';
 
@@ -19,4 +20,9 @@ function ChatWindow(props) {
         </div>
   );
 }
+
+ChatWindow.propTypes = {
+  chat: PropTypes.array.isRequired,
+};
+
 export default ChatWindow;
