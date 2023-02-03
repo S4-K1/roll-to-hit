@@ -5,7 +5,7 @@ import DiceRoller from './components/diceRoller';
 import ChatWindow from './components/chatWindow';
 
 function App() {
-  const [chat, setChat] = useState([]); // TODO Figure this out
+  const [chat, setChat] = useState([]);
 
   function updateChat(update) {
     setChat(chat.concat(update));
