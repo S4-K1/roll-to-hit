@@ -1,5 +1,5 @@
-// import React from 'react';
-// import GridSquare from './gridSquare';
+import React from 'react';
+import GridSquare from './gridSquare';
 import './css/board.css';
 
 function createBoard(x, y) {

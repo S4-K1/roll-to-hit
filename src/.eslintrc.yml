@@ -1,4 +1,6 @@
-extends: portsoc
+extends:
+  - portsoc
+  - "plugin:react/recommended"
 root: true
 env:
   browser: true

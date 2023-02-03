@@ -1,11 +1,11 @@
-import { useState } from 'react';
-// import Board from './components/board';
+import React, { useState } from 'react';
+import Board from './components/board';
 import './App.css';
-// import DiceRoller from './components/diceRoller';
-// import ChatWindow from './components/chatWindow';
+import DiceRoller from './components/diceRoller';
+import ChatWindow from './components/chatWindow';
 
 function App() {
-  const [chat, setChat] = useState('');
+  const [chat, setChat] = useState(''); // TODO Figure this out
 
   function updateChat(update) {
     setChat(chat + update + ';');
