@@ -16,8 +16,8 @@ function DiceRoller(props) {
 }
 
 DiceRoller.propTypes = {
-  roll: PropTypes.func,
-  dice: PropTypes.number,
+  roll: PropTypes.func.isRequired,
+  dice: PropTypes.number.isRequired,
 };
 
 
