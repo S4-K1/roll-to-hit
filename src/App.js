@@ -8,7 +8,8 @@ function App() {
   const [chat, setChat] = useState([]);
 
   function updateChat(update) {
-    setChat(chat.concat(update));
+    setChat(chat.concat(
+      { key: chat.length, text: update.text, type: update.type }));
   }
 
 
