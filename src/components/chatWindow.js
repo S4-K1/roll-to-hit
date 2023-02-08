@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 
 import './css/chatWindow.css';
 
-function ChatWindow(props) {
-  return (
+class ChatWindow extends React {
+  render() {
+    return (
         <div>
             <div className="chatWindow" >
-                <p>{props.chat}</p>
+                <p>{this.props.chat}</p>
             </div>
             <div className="writeWindow" >
                 <div className="submitBox">
@@ -18,7 +19,8 @@ function ChatWindow(props) {
                 </div>
             </div>
         </div>
-  );
+    );
+  }
 }
 
 ChatWindow.propTypes = {
