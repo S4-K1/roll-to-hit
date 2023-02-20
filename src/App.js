@@ -35,7 +35,7 @@ function App() {
           </div>
         </div>
         <div className="rightSideMenu">
-          <ChatWindow chat={chat} />
+          <ChatWindow chat={chat} updateChat={updateChat}/>
         </div>
       </header>
     </div>

@@ -5,6 +5,18 @@ import './css/chatWindow.css';
 
 class ChatWindow extends React.Component {
   render() {
+    const onEnterPress = (event) => {
+      if (event.keyCode === 13 && event.shiftKey === false) {
+        event.preventDefault();
+        updateChat();
+      }
+    };
+
+    const updateChat = () => {
+      this.props.updateChat({ text: document.getElementById('writeBox').value, type: 'user' });
+      document.getElementById('writeBox').value = '';
+    };
+
     const chatItems = this.props.chat.map((chatItem) =>
         <li key={chatItem.key}>{chatItem.type}: {chatItem.text}</li>,
     );
@@ -14,11 +26,9 @@ class ChatWindow extends React.Component {
                 <ul className='noBullets'>{chatItems}</ul>
             </div>
             <div className='writeWindow' >
-                <div className='writeBox'>
-                    <p>write here</p>
-                </div>
+                <textarea className='writeBox' id='writeBox' placeholder='Write here' onKeyDown={onEnterPress}/>
                 <div className='submitBox'>
-                    <p>submit</p>
+                    <button onClick={updateChat}>submit</button>
                 </div>
             </div>
         </div>
@@ -28,6 +38,7 @@ class ChatWindow extends React.Component {
 
 ChatWindow.propTypes = {
   chat: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updateChat: PropTypes.func.isRequired,
 };
 
 export default ChatWindow;
