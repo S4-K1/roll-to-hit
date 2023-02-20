@@ -13,12 +13,12 @@ class ChatWindow extends React.Component {
             <div className='chatWindow' >
                 <ul className='noBullets'>{chatItems}</ul>
             </div>
-            <div className="writeWindow" >
-                <div className='submitBox'>
-                    <p>submit</p>
-                </div>
+            <div className='writeWindow' >
                 <div className='writeBox'>
                     <p>write here</p>
+                </div>
+                <div className='submitBox'>
+                    <p>submit</p>
                 </div>
             </div>
         </div>

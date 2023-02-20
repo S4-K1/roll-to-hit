@@ -2,21 +2,25 @@
     display: flex;
     border-color: black;
     border-bottom-style: solid;
-    height: 75vh;
+    height: 90vh;
 }
 
 .writeWindow {
     display: flex;
     font-size: calc(5px + 2vmin);
-    height: 25vh;
+    height: 10vh;
+    align-items: center;
 }
 
 .submitBox {
-    width: 25%;
+    width: 30%;
+    height: 100%;
 }
 
 .writeBox {
-    width: 75%;
+    width: 70%;
+    height: 100%;
+    background-color: antiquewhite;
 }
 
 .noBullets {
@@ -26,4 +30,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    max-height: 100%;
+    scroll-behavior: smooth;
+    overflow-y: auto;
+    
 }
