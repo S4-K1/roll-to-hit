@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 import './css/diceRoller.css';
 
 function DiceRoller(props) {
-  function rollTheDice(max) {
-    const roll = (1 + Math.floor(Math.random() * max));
-    props.roll({ text: roll, type: 'roll' });
-  }
   return (
     <div className="diceRollBox">
-        <button className="diceRollButton" onClick={() => rollTheDice(props.dice)}>{props.dice}</button>
+        <button className="diceRollButton" onClick={() => props.roll()}>{props.dice}</button>
     </div>
   );
 }

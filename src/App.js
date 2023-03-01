@@ -12,6 +12,21 @@ function App() {
       { key: chat.length, text: update.text, type: update.type }));
   }
 
+  function rollTheDice(dice) {
+    const roll = (1 + Math.floor(Math.random() * dice));
+    // updateChat({ text: roll, type: 'roll' });
+    return roll;
+  }
+
+  function chatWrite(message) {
+    // if (message.text.substring(0, 5) === '/roll') {
+    if (message.text.split('/roll ')[1]) {
+      const calculation = message.text.split('/roll ')[1].split(/([+-])/g);
+      console.log(calculation);
+    } else {
+      updateChat(message);
+    }
+  }
 
   return (
     <div className="App">
@@ -24,18 +39,18 @@ function App() {
                 <Board />
               </div>
               <div className="diceContainer">
-                <DiceRoller dice={4} roll={updateChat} />
-                <DiceRoller dice={6} roll={updateChat}/>
-                <DiceRoller dice={8} roll={updateChat}/>
-                <DiceRoller dice={10} roll={updateChat}/>
-                <DiceRoller dice={12} roll={updateChat}/>
-                <DiceRoller dice={20} roll={updateChat}/>
+                <DiceRoller dice={4} roll={rollTheDice} />
+                <DiceRoller dice={6} roll={rollTheDice}/>
+                <DiceRoller dice={8} roll={rollTheDice}/>
+                <DiceRoller dice={10} roll={rollTheDice}/>
+                <DiceRoller dice={12} roll={rollTheDice}/>
+                <DiceRoller dice={20} roll={rollTheDice}/>
               </div>
             </div>
           </div>
         </div>
         <div className="rightSideMenu">
-          <ChatWindow chat={chat} updateChat={updateChat}/>
+          <ChatWindow chat={chat} chatWrite={chatWrite}/>
         </div>
       </header>
     </div>

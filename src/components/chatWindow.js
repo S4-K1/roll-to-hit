@@ -8,12 +8,12 @@ class ChatWindow extends React.Component {
     const onEnterPress = (event) => {
       if (event.keyCode === 13 && event.shiftKey === false) {
         event.preventDefault();
-        updateChat();
+        chatWrite();
       }
     };
 
-    const updateChat = () => {
-      this.props.updateChat({ text: document.getElementById('writeBox').value, type: 'user' });
+    const chatWrite = () => {
+      this.props.chatWrite({ text: document.getElementById('writeBox').value, type: 'user' });
       document.getElementById('writeBox').value = '';
     };
 
@@ -28,7 +28,7 @@ class ChatWindow extends React.Component {
             <div className='writeWindow' >
                 <textarea className='writeBox' id='writeBox' placeholder='Write here' onKeyDown={onEnterPress}/>
                 <div className='submitBox'>
-                    <button onClick={updateChat}>submit</button>
+                    <button onClick={chatWrite}>submit</button>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@ class ChatWindow extends React.Component {
 
 ChatWindow.propTypes = {
   chat: PropTypes.arrayOf(PropTypes.object).isRequired,
-  updateChat: PropTypes.func.isRequired,
+  chatWrite: PropTypes.func.isRequired,
 };
 
 export default ChatWindow;
