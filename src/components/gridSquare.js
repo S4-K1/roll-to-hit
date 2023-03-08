@@ -7,13 +7,17 @@ import './css/gridSquare.css';
 
 class GridSquare extends React.Component {
   render() {
+    const exampleFunction = () => {
+      console.log('Test');
+    };
+
     if (this.props.displayIcon) {
       const StyledDiv = styled.div`
         background-image: url(${icon});
         background-size: cover;
       `;
       return (
-        <StyledDiv className='grid-square' />
+        <StyledDiv className='grid-square' onClick={exampleFunction}/>
       );
     } else {
       return (

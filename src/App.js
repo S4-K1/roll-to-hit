@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="mainContainer">
-          <h1>Roll to Attack</h1>
+          <h1>Roll to Hit</h1>
           <div className="gameContainer">
             <div className="mainGame">
               <div>
