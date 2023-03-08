@@ -4,10 +4,11 @@ import './css/board.css';
 
 function createBoard(x, y) {
   const board = [];
-  for (let row = 0; row < x; row++) {
+  for (let column = 0; column < y; column++) {
     board.push([]);
-    for (let column = 0; column < y; column++) {
-      board[row].push(<GridSquare key={`${column}${row}`} displayIcon={true}/>);
+    for (let row = 0; row < x; row++) {
+      const key = `${column}${row}`;
+      board[column].push(<GridSquare key={key} keyProp={key} displayIcon={key === '25'}/>);
     }
   }
   return board;

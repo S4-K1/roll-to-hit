@@ -5,7 +5,7 @@ import './css/diceRoller.css';
 function DiceRoller(props) {
   return (
     <div className="diceRollBox">
-        <button className="diceRollButton" onClick={() => props.roll()}>{props.dice}</button>
+        <button className="diceRollButton" onClick={() => props.roll(props.dice)}>{props.dice}</button>
     </div>
   );
 }

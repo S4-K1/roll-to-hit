@@ -17,7 +17,7 @@ class GridSquare extends React.Component {
       );
     } else {
       return (
-        <div className='grid-square' />
+        <div className='grid-square'/>
       );
     }
   }
@@ -25,6 +25,7 @@ class GridSquare extends React.Component {
 
 GridSquare.propTypes = {
   displayIcon: PropTypes.bool,
+  keyProp: PropTypes.string,
 };
 
 export default GridSquare;

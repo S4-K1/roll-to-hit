@@ -14,7 +14,8 @@ function App() {
 
   function rollTheDice(dice) {
     const roll = (1 + Math.floor(Math.random() * dice));
-    // updateChat({ text: roll, type: 'roll' });
+    console.log(dice);
+    updateChat({ text: roll, type: 'roll' });
     return roll;
   }
 
