@@ -7,7 +7,7 @@ function createBoard(x, y) {
   for (let row = 0; row < x; row++) {
     board.push([]);
     for (let column = 0; column < y; column++) {
-      board[row].push(<GridSquare key={`${column}${row}`}/>);
+      board[row].push(<GridSquare key={`${column}${row}`} displayIcon={true}/>);
     }
   }
   return board;
