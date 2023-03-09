@@ -7,8 +7,8 @@ import './css/gridSquare.css';
 
 class GridSquare extends React.Component {
   render() {
-    const exampleFunction = () => {
-      console.log('Test');
+    const openTokenMenu = () => {
+      this.props.openTokenMenu();
     };
 
     if (this.props.displayIcon) {
@@ -17,7 +17,7 @@ class GridSquare extends React.Component {
         background-size: cover;
       `;
       return (
-        <StyledDiv className='grid-square' onClick={exampleFunction}/>
+        <StyledDiv className='grid-square' onClick={openTokenMenu}/>
       );
     } else {
       return (
@@ -30,6 +30,7 @@ class GridSquare extends React.Component {
 GridSquare.propTypes = {
   displayIcon: PropTypes.bool,
   keyProp: PropTypes.string,
+  openTokenMenu: PropTypes.func,
 };
 
 export default GridSquare;

@@ -19,6 +19,10 @@ function App() {
     return roll;
   }
 
+  function openTokenMenu() {
+    console.log('Open token menu');
+  }
+
   function chatWrite(message) {
     // if (message.text.substring(0, 5) === '/roll') {
     if (message.text.split('/roll ')[1]) {
@@ -37,7 +41,7 @@ function App() {
           <div className="gameContainer">
             <div className="mainGame">
               <div>
-                <Board />
+                <Board openTokenMenu={openTokenMenu}/>
               </div>
               <div className="diceContainer">
                 <DiceRoller dice={4} roll={rollTheDice} />

@@ -1,14 +1,25 @@
 import React from 'react';
 import GridSquare from './gridSquare';
+import PropTypes from 'prop-types';
 import './css/board.css';
 
 function createBoard(x, y) {
+  function openTokenMenu() {
+    console.log('Open Token Menu');
+    this.props.openTokenMenu();
+  }
+
   const board = [];
   for (let column = 0; column < y; column++) {
     board.push([]);
     for (let row = 0; row < x; row++) {
       const key = `${column}${row}`;
-      board[column].push(<GridSquare key={key} keyProp={key} displayIcon={key === '25'}/>);
+      board[column].push(<GridSquare
+        key={key}
+        keyProp={key}
+        displayIcon={key === '25'}
+        openTokenMenu={openTokenMenu}
+      />);
     }
   }
   return board;
@@ -23,4 +34,9 @@ function Board() {
     </div>
   );
 }
+
+Board.propTypes = {
+  openTokenMenu: PropTypes.func,
+};
+
 export default Board;
