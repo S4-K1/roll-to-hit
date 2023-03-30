@@ -1,12 +1,12 @@
 import React from 'react';
 import GridSquare from './gridSquare';
+import TokenSquare from './tokenSquare';
 import PropTypes from 'prop-types';
 import './css/board.css';
 
-function createBoard(x, y) {
+function createBoard(props, x, y) {
   function openTokenMenu() {
-    console.log('Open Token Menu');
-    this.props.openTokenMenu();
+    props.openTokenMenu();
   }
 
   const board = [];
@@ -14,19 +14,26 @@ function createBoard(x, y) {
     board.push([]);
     for (let row = 0; row < x; row++) {
       const key = `${column}${row}`;
-      board[column].push(<GridSquare
-        key={key}
-        keyProp={key}
-        displayIcon={key === '25'}
-        openTokenMenu={openTokenMenu}
-      />);
+      if (key === '25') {
+        board[column].push(
+          <TokenSquare
+            key={key}
+            keyProp={key}
+            openTokenMenu={openTokenMenu}
+          />,
+        );
+      } else {
+        board[column].push(
+          <GridSquare key={key}/>,
+        );
+      }
     }
   }
   return board;
 }
 
-function Board() {
-  const board = createBoard(10, 10);
+function Board(props) {
+  const board = createBoard(props, 10, 10);
   // TODO Change these to function parameters when implementing changing board size
   return (
     <div className="board">

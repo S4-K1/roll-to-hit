@@ -6,6 +6,7 @@ import ChatWindow from './components/chatWindow';
 
 function App() {
   const [chat, setChat] = useState([]);
+  const [tokenSelected, setTokenSelected] = useState(false);
 
   function updateChat(update) {
     setChat(chat.concat(
@@ -20,11 +21,10 @@ function App() {
   }
 
   function openTokenMenu() {
-    console.log('Open token menu');
+    setTokenSelected(!tokenSelected);
   }
 
   function chatWrite(message) {
-    // if (message.text.substring(0, 5) === '/roll') {
     if (message.text.split('/roll ')[1]) {
       const calculation = message.text.split('/roll ')[1].split(/([+-])/g);
       console.log(calculation);
@@ -37,7 +37,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="mainContainer">
-          <h1>Roll to Hit</h1>
+          <h1 className='title'>Roll to Hit</h1>
           <div className="gameContainer">
             <div className="mainGame">
               <div>
@@ -53,6 +53,11 @@ function App() {
               </div>
             </div>
           </div>
+          {tokenSelected && (
+            <div className='bottomSection'>
+              test
+            </div>
+          )}
         </div>
         <div className="rightSideMenu">
           <ChatWindow chat={chat} chatWrite={chatWrite}/>
