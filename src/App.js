@@ -23,20 +23,24 @@ function App() {
     setTokenSelected(!tokenSelected);
   }
 
+  function rollCommand(command) {
+    const calculation = command.text.split('/roll ')[1].split(/([+-])/g);
+    let total = 0;
+    calculation.forEach(element => {
+      switch (true) {
+        case element.toLowerCase().charAt(0) === 'd' :
+          total = total + rollTheDice(element.substring(1));
+          break;
+        case !isNaN(element) :
+          total = total + parseInt(element);
+      }
+    });
+    updateChat({ text: total, type: 'user' });
+  }
+
   function chatWrite(message) {
     if (message.text.split('/roll ')[1]) {
-      const calculation = message.text.split('/roll ')[1].split(/([+-])/g);
-      let total = 0;
-      calculation.forEach(element => {
-        switch (true) {
-          case element.toLowerCase().charAt(0) === 'd' :
-            total = total + rollTheDice(element.substring(1));
-            break;
-          case !isNaN(element) :
-            total = total + parseInt(element);
-        }
-      });
-      updateChat({ text: total, type: 'user' });
+      rollCommand(message);
     } else {
       updateChat(message);
     }
