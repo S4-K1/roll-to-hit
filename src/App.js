@@ -15,7 +15,6 @@ function App() {
 
   function rollTheDice(dice) {
     const roll = (1 + Math.floor(Math.random() * dice));
-    console.log(dice);
     updateChat({ text: roll, type: 'roll' });
     return roll;
   }
@@ -27,7 +26,17 @@ function App() {
   function chatWrite(message) {
     if (message.text.split('/roll ')[1]) {
       const calculation = message.text.split('/roll ')[1].split(/([+-])/g);
-      console.log(calculation);
+      let total = 0;
+      calculation.forEach(element => {
+        switch (true) {
+          case element.toLowerCase().charAt(0) === 'd' :
+            total = total + rollTheDice(element.substring(1));
+            break;
+          case !isNaN(element) :
+            total = total + parseInt(element);
+        }
+      });
+      updateChat({ text: total, type: 'user' });
     } else {
       updateChat(message);
     }
@@ -55,7 +64,7 @@ function App() {
           </div>
           {tokenSelected && (
             <div className='bottomSection'>
-              test
+              These are going to be the macros
             </div>
           )}
         </div>
