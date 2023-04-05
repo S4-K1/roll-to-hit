@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { evaluate } from 'mathjs';
 import Board from './components/board';
 import './App.css';
 import DiceRoller from './components/diceRoller';
@@ -24,23 +25,20 @@ function App() {
   }
 
   function rollCommand(command) {
-    const calculation = command.text.split('/roll ')[1].split(/([+-])/g);
-    let total = 0;
-    calculation.forEach(element => {
-      switch (true) {
-        case element.toLowerCase().charAt(0) === 'd' :
-          total = total + rollTheDice(element.substring(1));
-          break;
-        case !isNaN(element) :
-          total = total + parseInt(element);
+    const split = command.text.split('/roll ')[1].split(/([+-/*])/g);
+    let calculation = '';
+    split.forEach(element => {
+      if (element.toLowerCase().charAt(0) === 'd') {
+        element = rollTheDice(element.substring(1));
       }
+      calculation += element;
     });
-    updateChat({ text: total, type: 'user' });
+    return evaluate(calculation);
   }
 
   function chatWrite(message) {
     if (message.text.split('/roll ')[1]) {
-      rollCommand(message);
+      updateChat({ text: rollCommand(message), type: 'roll' });
     } else {
       updateChat(message);
     }
