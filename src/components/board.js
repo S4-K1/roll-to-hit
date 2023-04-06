@@ -24,7 +24,7 @@ function Board(props) {
   return (
     <div>
       <div>
-       <TokenSquare openTokenMenu={props.openTokenMenu} position={[1, 2]} />
+       <TokenSquare openTokenMenu={props.openTokenMenu} position={[3, 9]} />
       </div>
       <div className="board">
         {board}

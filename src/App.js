@@ -44,9 +44,13 @@ function App() {
     }
   }
 
+  function deleteMeLater() {
+    console.log(event);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header" onKeyDown={deleteMeLater}>
         <div className="mainContainer">
           <h1 className='title'>Roll to Hit</h1>
           <div className="gameContainer">
