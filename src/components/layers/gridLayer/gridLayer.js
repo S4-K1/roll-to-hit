@@ -23,9 +23,9 @@ function gridLayer(props) {
     <div
       className='grid'
       style={{
-        // grid-template-columns: repeat(10, 25px);
         gridTemplateColumns: `repeat(${props.x}, 25px)`,
       }}
+      onClick={props.closeTokenMenu}
     >
       {grid}
     </div>
@@ -35,6 +35,7 @@ function gridLayer(props) {
 gridLayer.propTypes = {
   x: PropTypes.number,
   y: PropTypes.number,
+  closeTokenMenu: PropTypes.func,
 };
 
 export default gridLayer;

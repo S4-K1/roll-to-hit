@@ -24,6 +24,10 @@ function App() {
     setTokenSelected(true);
   }
 
+  function closeTokenMenu() {
+    setTokenSelected(false);
+  }
+
   function rollCommand(command) {
     const split = command.text.split('/roll ')[1].split(/([+-/*])/g);
     let calculation = '';
@@ -52,7 +56,7 @@ function App() {
           <div className="gameContainer">
             <div className="mainGame">
               <div>
-                <Board openTokenMenu={openTokenMenu}/>
+                <Board openTokenMenu={openTokenMenu} closeTokenMenu={closeTokenMenu}/>
               </div>
               <div className="diceContainer">
                 <DiceRoller dice={4} roll={rollTheDice} />
