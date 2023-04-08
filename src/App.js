@@ -21,7 +21,7 @@ function App() {
   }
 
   function openTokenMenu() {
-    setTokenSelected(!tokenSelected);
+    setTokenSelected(true);
   }
 
   function rollCommand(command) {
@@ -44,13 +44,9 @@ function App() {
     }
   }
 
-  function deleteMeLater() {
-    console.log(event);
-  }
-
   return (
     <div className="App">
-      <header className="App-header" onKeyDown={deleteMeLater}>
+      <header className="App-header">
         <div className="mainContainer">
           <h1 className='title'>Roll to Hit</h1>
           <div className="gameContainer">

@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/gridSquare.css';
+import './gridSquare.css';
 
 
 class GridSquare extends React.Component {

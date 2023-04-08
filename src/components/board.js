@@ -1,34 +1,20 @@
-import React from 'react';
-import GridSquare from './gridSquare';
-import TokenSquare from './tokenSquare';
+import React, { useState } from 'react';
+import GridLayer from './layers/gridLayer/gridLayer';
+import TokenSquare from './layers/tokenLayer/tokenSquare';
 import PropTypes from 'prop-types';
-import './css/board.css';
-
-function createBoard(x, y) {
-  const board = [];
-  for (let row = 0; row < x; row++) {
-    board.push([]);
-    for (let column = 0; column < y; column++) {
-      const key = `${row}${column}`;
-      board[row].push(
-        <GridSquare key={key}/>,
-      );
-    }
-  }
-  return board;
-}
 
 function Board(props) {
-  const board = createBoard(10, 10);
-  // TODO Change these to function parameters when implementing changing board size
+  const [tokenSelected, setTokenSelected] = useState(false);
+
+  function openTokenMenu(command) {
+    props.openTokenMenu(command);
+    setTokenSelected(true);
+  }
+
   return (
     <div>
-      <div>
-       <TokenSquare openTokenMenu={props.openTokenMenu} position={[3, 9]} />
-      </div>
-      <div className="board">
-        {board}
-      </div>
+      <TokenSquare openTokenMenu={openTokenMenu} position={[3, 9]} selected={tokenSelected}/>
+      <GridLayer x={10} y={10} />
     </div>
   );
 }
