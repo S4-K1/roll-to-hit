@@ -26,22 +26,22 @@ function Board(props) {
         break;
       case 38:
         // Up
-        setYPosition(yPosition + 1);
+        setYPosition((yPosition) => yPosition - 1);
         break;
       case 39:
         // Right
-        setXPosition(xPosition + 1);
+        setXPosition((xPosition) => xPosition + 1);
         break;
       case 40:
         // Down
-        setYPosition(yPosition - 1);
+        setYPosition((yPosition) => yPosition + 1);
         break;
     }
   }
 
   useEffect(() => {
     document.addEventListener('keydown', handleArrows);
-  }, [xPosition, yPosition]);
+  }, []);
   return (
     <div>
       <TokenSquare openTokenMenu={openTokenMenu} xPosition={xPosition} yPosition={yPosition} selected={tokenSelected}/>
