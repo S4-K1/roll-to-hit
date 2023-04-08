@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GridLayer from './layers/gridLayer/gridLayer';
 import TokenSquare from './layers/tokenLayer/tokenSquare';
 import PropTypes from 'prop-types';
@@ -18,48 +18,33 @@ function Board(props) {
     setTokenSelected(false);
   }
 
-  function moveTokenLeft() {
-    setXPosition(xPosition - 1);
-  }
-
-  function moveTokenUp() {
-    setYPosition(2);
-    console.log(yPosition);
-  }
-
-  function moveTokenRight() {
-    setXPosition(xPosition + 1);
-  }
-
-  function moveTokenDown() {
-    setYPosition(yPosition - 1);
-  }
-
   function handleArrows(event) {
     switch (event.keyCode) {
       case 37:
-        console.log('left');
-        moveTokenLeft();
+        // Left
+        setXPosition((xPosition) => xPosition - 1);
         break;
       case 38:
-        console.log('up');
-        moveTokenUp();
+        // Up
+        setYPosition(yPosition + 1);
         break;
       case 39:
-        console.log('right');
-        moveTokenRight();
+        // Right
+        setXPosition(xPosition + 1);
         break;
       case 40:
-        console.log('down');
-        moveTokenDown();
+        // Down
+        setYPosition(yPosition - 1);
         break;
     }
   }
 
-  document.addEventListener('keydown', handleArrows);
+  useEffect(() => {
+    document.addEventListener('keydown', handleArrows);
+  }, [xPosition, yPosition]);
   return (
     <div>
-      <TokenSquare openTokenMenu={openTokenMenu} position={[xPosition, yPosition]} selected={tokenSelected}/>
+      <TokenSquare openTokenMenu={openTokenMenu} xPosition={xPosition} yPosition={yPosition} selected={tokenSelected}/>
       <GridLayer x={10} y={10} closeTokenMenu={closeTokenMenu} />
     </div>
   );
