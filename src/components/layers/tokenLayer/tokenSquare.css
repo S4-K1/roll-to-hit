@@ -1,8 +1,8 @@
 .token-square {
     position: absolute;
     border-style: solid;
-    width: 24px;
-    height: 24px;
+    width: 49px;
+    height: 49px;
     border-width: 0.5px;
     border-color: black;
     background-color: white;

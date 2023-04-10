@@ -23,7 +23,7 @@ function gridLayer(props) {
     <div
       className='grid'
       style={{
-        gridTemplateColumns: `repeat(${props.x}, 25px)`,
+        gridTemplateColumns: `repeat(${props.x}, 50px)`,
       }}
       onClick={props.closeTokenMenu}
     >

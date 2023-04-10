@@ -6,7 +6,7 @@ import './tokenSquare.css';
 
 function TokenSquare(props) {
   const convertToMargin = (positionNum) => {
-    positionNum = positionNum * 25;
+    positionNum = positionNum * 50;
     return positionNum;
   };
 
@@ -17,8 +17,8 @@ function TokenSquare(props) {
   return (
       <img
         style={{
-          marginLeft: `${convertToMargin(props.xPosition) - 150}px`,
-          marginTop: `${convertToMargin(props.yPosition) - 25}px`,
+          marginLeft: `${convertToMargin(props.xPosition) - 300}px`,
+          marginTop: `${convertToMargin(props.yPosition) - 50}px`,
         }}
         className={!props.selected ? 'token-square' : 'token-square selected'}
         src={icon}
