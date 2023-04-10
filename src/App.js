@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Board from './components/board';
-import './App.css';
 import ChatWindow from './components/chatWindow';
+import MacroButton from './components/macroButton';
+import './App.css';
 
 function App() {
   const [tokenSelected, setTokenSelected] = useState(false);
@@ -28,7 +29,7 @@ function App() {
           </div>
           {tokenSelected && (
             <div className='bottomSection'>
-              These are going to be the macros
+              <MacroButton />
             </div>
           )}
         </div>

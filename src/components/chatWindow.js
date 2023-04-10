@@ -13,6 +13,11 @@ function ChatWindow() {
     }
   }
 
+  function chatWrite() {
+    chatHandler({ text: document.getElementById('writeBox').value, type: 'user' });
+    document.getElementById('writeBox').value = '';
+  }
+
   function updateChat(update) {
     setChat(chat.concat(
       { key: chat.length, text: update.text, type: update.type },
@@ -37,7 +42,7 @@ function ChatWindow() {
     return evaluate(calculation);
   }
 
-  function chatWrite(message) {
+  function chatHandler(message) {
     if (message.text.split('/roll ')[1]) {
       updateChat({ text: rollCommand(message), type: 'roll' });
     } else {
@@ -53,16 +58,18 @@ function ChatWindow() {
       <div className='chatWindow' >
         <ul className='noBullets'>{chatItems}</ul>
       </div>
-      <div className="diceContainer">
-        <DiceRoller dice={4} roll={rollTheDice} />
-        <DiceRoller dice={6} roll={rollTheDice}/>
-        <DiceRoller dice={8} roll={rollTheDice}/>
-        <DiceRoller dice={10} roll={rollTheDice}/>
-        <DiceRoller dice={12} roll={rollTheDice}/>
-        <DiceRoller dice={20} roll={rollTheDice}/>
-      </div>
       <div className='writeWindow' >
-        <textarea className='writeBox' id='writeBox' placeholder='Write here' onKeyDown={onEnterPress}/>
+        <div className='leftSectionContainer'>
+          <div className="diceContainer">
+            <DiceRoller dice={4} roll={rollTheDice} />
+            <DiceRoller dice={6} roll={rollTheDice}/>
+            <DiceRoller dice={8} roll={rollTheDice}/>
+            <DiceRoller dice={10} roll={rollTheDice}/>
+            <DiceRoller dice={12} roll={rollTheDice}/>
+            <DiceRoller dice={20} roll={rollTheDice}/>
+          </div>
+          <textarea className='writeBox' id='writeBox' placeholder='Write here' onKeyDown={onEnterPress}/>
+        </div>
         <div className='submitBox'>
             <button onClick={chatWrite}>submit</button>
         </div>
