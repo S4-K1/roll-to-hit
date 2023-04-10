@@ -38,3 +38,8 @@
     overflow-y: auto;
     
 }
+
+.diceContainer {
+    display: flex;
+    justify-content: space-evenly;
+  }

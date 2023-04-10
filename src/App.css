@@ -52,8 +52,3 @@
   border-bottom-style: solid;
   border-left-style: solid;
 }
-
-.diceContainer {
-  display: flex;
-  justify-content: space-between;
-}

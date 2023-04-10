@@ -1,44 +1,73 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+import React, { useState } from 'react';
+import { evaluate } from 'mathjs';
 import './css/chatWindow.css';
+import DiceRoller from './diceRoller';
 
-class ChatWindow extends React.Component {
-  render() {
-    const onEnterPress = (event) => {
-      if (event.keyCode === 13 && event.shiftKey === false) {
-        event.preventDefault();
-        chatWrite();
-      }
-    };
+function ChatWindow() {
+  const [chat, setChat] = useState([]);
 
-    const chatWrite = () => {
-      this.props.chatWrite({ text: document.getElementById('writeBox').value, type: 'user' });
-      document.getElementById('writeBox').value = '';
-    };
-
-    const chatItems = this.props.chat.map((chatItem) =>
-        <li key={chatItem.key}>{chatItem.type}: {chatItem.text}</li>,
-    );
-    return (
-        <div>
-            <div className='chatWindow' >
-                <ul className='noBullets'>{chatItems}</ul>
-            </div>
-            <div className='writeWindow' >
-                <textarea className='writeBox' id='writeBox' placeholder='Write here' onKeyDown={onEnterPress}/>
-                <div className='submitBox'>
-                    <button onClick={chatWrite}>submit</button>
-                </div>
-            </div>
-        </div>
-    );
+  function onEnterPress(event) {
+    if (event.keyCode === 13 && event.shiftKey === false) {
+      event.preventDefault();
+      chatWrite();
+    }
   }
-}
 
-ChatWindow.propTypes = {
-  chat: PropTypes.arrayOf(PropTypes.object).isRequired,
-  chatWrite: PropTypes.func.isRequired,
-};
+  function updateChat(update) {
+    setChat(chat.concat(
+      { key: chat.length, text: update.text, type: update.type }));
+  }
+
+  function rollTheDice(dice) {
+    const roll = (1 + Math.floor(Math.random() * dice));
+    updateChat({ text: roll, type: 'roll' });
+    return roll;
+  }
+
+  function rollCommand(command) {
+    const split = command.text.split('/roll ')[1].split(/([+-/*])/g);
+    let calculation = '';
+    split.forEach(element => {
+      if (element.toLowerCase().charAt(0) === 'd') {
+        element = rollTheDice(element.substring(1));
+      }
+      calculation += element;
+    });
+    return evaluate(calculation);
+  }
+
+  function chatWrite(message) {
+    if (message.text.split('/roll ')[1]) {
+      updateChat({ text: rollCommand(message), type: 'roll' });
+    } else {
+      updateChat(message);
+    }
+  }
+
+  const chatItems = chat.map((chatItem) =>
+    <li key={chatItem.key}>{chatItem.type}: {chatItem.text}</li>,
+  );
+  return (
+    <div>
+      <div className='chatWindow' >
+        <ul className='noBullets'>{chatItems}</ul>
+      </div>
+      <div className="diceContainer">
+        <DiceRoller dice={4} roll={rollTheDice} />
+        <DiceRoller dice={6} roll={rollTheDice}/>
+        <DiceRoller dice={8} roll={rollTheDice}/>
+        <DiceRoller dice={10} roll={rollTheDice}/>
+        <DiceRoller dice={12} roll={rollTheDice}/>
+        <DiceRoller dice={20} roll={rollTheDice}/>
+      </div>
+      <div className='writeWindow' >
+        <textarea className='writeBox' id='writeBox' placeholder='Write here' onKeyDown={onEnterPress}/>
+        <div className='submitBox'>
+            <button onClick={chatWrite}>submit</button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default ChatWindow;
