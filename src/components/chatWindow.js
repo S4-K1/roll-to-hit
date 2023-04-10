@@ -15,7 +15,8 @@ function ChatWindow() {
 
   function updateChat(update) {
     setChat(chat.concat(
-      { key: chat.length, text: update.text, type: update.type }));
+      { key: chat.length, text: update.text, type: update.type },
+    ));
   }
 
   function rollTheDice(dice) {
