@@ -1,0 +1,22 @@
+.macroContainer {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.macroButton {
+    font-weight: bold;
+    height: 70px;
+    width: 70px;
+}
+
+.macroMenu {
+    font-size: small;
+    padding-left: 70px;
+}
+
+.menuButton {
+    height: 30px;
+    border-color: black;
+    background-color: brown;
+    font-weight: bold;
+}

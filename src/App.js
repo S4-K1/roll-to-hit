@@ -8,6 +8,7 @@ import './App.css';
 function App() {
   const [chat, setChat] = useState([]);
   const [tokenSelected, setTokenSelected] = useState(false);
+  const [MacroMenu, setMacroMenu] = useState(false);
 
   function updateChat(update) {
     setChat(chat.concat(
@@ -44,6 +45,14 @@ function App() {
     updateChat({ text: command, type: 'macro' });
   }
 
+  function openMacroMenu() {
+    setMacroMenu(true);
+  }
+
+  function closeMacroMenu() {
+    setMacroMenu(false);
+  }
+
   function openTokenMenu() {
     setTokenSelected(true);
   }
@@ -55,7 +64,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="mainContainer">
+        <div className="mainContainer" onClick={closeMacroMenu}>
           <h1 className='title'>Roll to Hit</h1>
           <div className="gameContainer">
             <div className="mainGame">
@@ -66,7 +75,11 @@ function App() {
           </div>
           {tokenSelected && (
             <div className='bottomSection'>
-              <MacroButton macroCommand={macroCommand}/>
+              <MacroButton
+                macroCommand={macroCommand}
+                macroMenu={MacroMenu}
+                openMacroMenu={openMacroMenu}
+              />
             </div>
           )}
         </div>
