@@ -36,7 +36,7 @@ function ChatWindow(props) {
           <textarea className='writeBox' id='writeBox' placeholder='Write here' onKeyDown={onEnterPress}/>
         </div>
         <div className='submitBox'>
-            <button onClick={chatWrite}>submit</button>
+            <button className='submitButton' onClick={chatWrite}>submit</button>
         </div>
       </div>
     </div>
