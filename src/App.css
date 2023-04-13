@@ -15,10 +15,10 @@
 }
 
 .mainContainer {
-  width: 75%;
-  /* -webkit-user-select: none; Safari */
-  /* -ms-user-select: none; IE 10 and IE 11 */
-  /* user-select: none; Standard syntax */
+  width: 75vw;
+  -webkit-user-select: none; /*Safari*/
+  -ms-user-select: none; /*IE 10 and IE 11*/
+  user-select: none; /*Standard syntax*/
 }
 
 .gameContainer {
@@ -42,7 +42,7 @@
 
 .rightSideMenu {
   height: 100vh;
-  width: 25%;
+  width: 25vw;
   float: right;
   display: flex;
   flex-direction: column;

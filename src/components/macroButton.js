@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MacroEditMenu from './macroEditMenu.js';
 import PropTypes from 'prop-types';
 import './css/macroButton.css';
 
 function MacroButton(props) {
+  const [showMacroEditMenu, setShowMacroEditMenu] = useState(false);
+
   function executeMacro() {
     props.macroCommand('asdf');
   }
@@ -13,12 +16,12 @@ function MacroButton(props) {
   }
 
   function openMacroEditMenu() {
-    console.log('Open macro edit menu');
+    setShowMacroEditMenu(true);
   }
 
   return (
     <div className='macroContainer'>
-       <button className='macroButton' onContextMenu={handleRightClick} onClick={executeMacro}>
+        <button className='macroButton' onContextMenu={handleRightClick} onClick={executeMacro}>
             Macro
         </button>
         {props.macroMenu && (
@@ -27,6 +30,9 @@ function MacroButton(props) {
                     Edit Macro
                 </button>
             </div>
+        )}
+        {showMacroEditMenu && (
+            <MacroEditMenu />
         )}
     </div>
   );

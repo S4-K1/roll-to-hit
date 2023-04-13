@@ -1,0 +1,15 @@
+.macroEditContainer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 50vh;
+    width: 74vw;
+    left: 0;
+}
+
+.macroEditMenu {
+    background-color: white;
+    width: 500px;
+    border: solid;
+    color: black;
+}
