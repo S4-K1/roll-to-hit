@@ -2,14 +2,39 @@
     position: absolute;
     display: flex;
     justify-content: center;
-    bottom: 50vh;
+    top: -60vh;
     width: 74vw;
     left: 0;
 }
 
 .macroEditMenu {
     background-color: white;
-    width: 500px;
+    width: 470px;
     border: solid;
     color: black;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.editBox{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.inputBox {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row-reverse;
+    padding-top: 20px;
+}
+
+.button {
+    margin-left: 5px;
 }

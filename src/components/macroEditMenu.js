@@ -11,7 +11,19 @@ function MacroEditMenu() {
   return (
     <div className='macroEditContainer'>
         <div className='macroEditMenu'>
-            <textarea id='macroBox' placeholder='Macro' onKeyDown={onEnterPress} />
+            <h2>Edit Macro</h2>
+            <div className='editBox'>
+                <b>Name</b>
+                <input id='nameBox' className='inputBox' placeholder='No name written' onKeyDown={onEnterPress} />
+            </div>
+            <div className='editBox'>
+                <b>Macro</b>
+                <textarea id='macroBox' className='inputBox' placeholder='No macro written' rows={4} cols={40} onKeyDown={onEnterPress} />
+            </div>
+            <div className='buttonContainer'>
+                <button className='button'>Cancel</button>
+                <button className='button'>Save Changes</button>
+            </div>
         </div>
     </div>
   );
