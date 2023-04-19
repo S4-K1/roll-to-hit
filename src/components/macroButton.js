@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import MacroEditMenu from './macroEditMenu.js';
 import PropTypes from 'prop-types';
+import Macro from './macros/macro.json';
 import './css/macroButton.css';
 
 function MacroButton(props) {
+  const [macro] = useState(Macro);
+
+  console.log('macro: ', Macro);
+
   const [showMacroEditMenu, setShowMacroEditMenu] = useState(false);
 
   function executeMacro() {
@@ -19,6 +24,14 @@ function MacroButton(props) {
     setShowMacroEditMenu(true);
   }
 
+  function closeMacroEditMenu() {
+    setShowMacroEditMenu(false);
+  }
+
+  function editMacro() {
+    console.log(Macro);
+  }
+
   return (
     <div className='macroContainer'>
         <button className='macroButton' onContextMenu={handleRightClick} onClick={executeMacro}>
@@ -32,7 +45,12 @@ function MacroButton(props) {
             </div>
         )}
         {showMacroEditMenu && (
-            <MacroEditMenu />
+            <MacroEditMenu
+              closeMacroEditMenu={closeMacroEditMenu}
+              editMacro={editMacro}
+              macroTitle={macro.title}
+              macroCommand={macro.command}
+            />
         )}
     </div>
   );
