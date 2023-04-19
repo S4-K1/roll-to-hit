@@ -21,35 +21,35 @@ function MacroEditMenu(props) {
 
   return (
     <div className='macroEditContainer'>
-        <div className='macroEditMenu'>
-            <h2>Edit Macro</h2>
-            <div className='editBox'>
-                <b>Name</b>
-                <input
-                    id='nameBox'
-                    className='inputBox'
-                    placeholder='No name written'
-                    value={props.macroTitle}
-                    onChange={setMacroTitle}
-                />
-            </div>
-            <div className='editBox'>
-                <b>Macro</b>
-                <textarea
-                    id='macroBox'
-                    className='inputBox'
-                    placeholder='No macro written'
-                    value={props.macroCommand}
-                    onChange={setMacroCommand}
-                    rows={4}
-                    cols={40}
-                />
-            </div>
-            <div className='buttonContainer'>
-                <button className='button' onClick={close}>Cancel</button>
-                <button className='button' onClick={save}>Save Changes</button>
-            </div>
+      <div className='macroEditMenu'>
+        <h2>Edit Macro</h2>
+        <div className='editBox'>
+          <b>Name</b>
+          <input
+            id='nameBox'
+            className='inputBox'
+            placeholder='No name written'
+            value={props.macroTitle}
+            onChange={setMacroTitle}
+          />
         </div>
+        <div className='editBox'>
+          <b>Macro</b>
+          <textarea
+            id='macroBox'
+            className='inputBox'
+            placeholder='No macro written'
+            value={props.macroCommand}
+            onChange={setMacroCommand}
+            rows={4}
+            cols={40}
+          />
+        </div>
+        <div className='buttonContainer'>
+          <button className='button' onClick={close}>Cancel</button>
+          <button className='button' onClick={save}>Save Changes</button>
+        </div>
+      </div>
     </div>
   );
 }

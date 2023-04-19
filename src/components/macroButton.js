@@ -47,27 +47,27 @@ function MacroButton(props) {
   }
 
   return (
-    <div className='macroContainer'>
-        <button className='macroButton' onContextMenu={handleRightClick} onClick={executeMacro}>
-            {Macro.title}
-        </button>
-        {props.macroMenu && (
-            <div className='macroMenu'>
-                <button className='menuButton' onClick={openMacroEditMenu}>
-                    Edit Macro
-                </button>
-            </div>
-        )}
-        {showMacroEditMenu && (
-            <MacroEditMenu
-              closeMacroEditMenu={closeMacroEditMenu}
-              macroTitle={macroTitle}
-              macroCommand={macroCommand}
-              editCommand={editCommand}
-              editTitle={editTitle}
-              saveMacro={saveMacro}
-            />
-        )}
+    <div>
+      {props.macroMenu && (
+        <div className='macroMenu'>
+          <button className='menuButton' onClick={openMacroEditMenu}>
+            Edit Macro
+          </button>
+        </div>
+      )}
+      <button className='macroButton' onContextMenu={handleRightClick} onClick={executeMacro}>
+        {Macro.title}
+      </button>
+      {showMacroEditMenu && (
+        <MacroEditMenu
+          closeMacroEditMenu={closeMacroEditMenu}
+          macroTitle={macroTitle}
+          macroCommand={macroCommand}
+          editCommand={editCommand}
+          editTitle={editTitle}
+          saveMacro={saveMacro}
+        />
+      )}
     </div>
   );
 }

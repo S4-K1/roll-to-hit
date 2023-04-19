@@ -1,17 +1,15 @@
-.macroContainer {
-    display: flex;
-    flex-direction: column-reverse;
-}
-
 .macroButton {
     font-weight: bold;
     height: 70px;
-    width: 70px;
+    padding-right: 5px;
+    width: 100%;
+    min-width: 83.45px;
 }
 
 .macroMenu {
     font-size: small;
-    padding-left: 70px;
+    margin-left: 100%;
+    width: max-content;
 }
 
 .menuButton {
