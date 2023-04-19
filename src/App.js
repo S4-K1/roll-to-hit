@@ -42,7 +42,11 @@ function App() {
   }
 
   function macroCommand(command) {
-    updateChat({ text: command.command, type: command.title });
+    if (command.command.split('/roll ')[1]) {
+      updateChat({ text: rollCommand(command.command), type: command.title });
+    } else {
+      updateChat({ text: command.command, type: command.title });
+    }
   }
 
   function openMacroMenu() {
