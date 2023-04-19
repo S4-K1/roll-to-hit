@@ -42,7 +42,7 @@ function App() {
   }
 
   function macroCommand(command) {
-    updateChat({ text: command, type: 'macro' });
+    updateChat({ text: command.command, type: command.title });
   }
 
   function openMacroMenu() {

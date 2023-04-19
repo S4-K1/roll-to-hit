@@ -10,7 +10,7 @@ function MacroButton(props) {
   const [showMacroEditMenu, setShowMacroEditMenu] = useState(false);
 
   function executeMacro() {
-    props.macroCommand('asdf');
+    props.macroCommand(Macro);
   }
 
   function handleRightClick(event) {
@@ -37,7 +37,7 @@ function MacroButton(props) {
   return (
     <div className='macroContainer'>
         <button className='macroButton' onContextMenu={handleRightClick} onClick={executeMacro}>
-            Macro
+            {Macro.title}
         </button>
         {props.macroMenu && (
             <div className='macroMenu'>

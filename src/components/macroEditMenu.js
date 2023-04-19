@@ -8,11 +8,11 @@ function MacroEditMenu(props) {
   }
 
   function setMacroCommand(event) {
-    props.editCommand(event.nativeEvent.data);
+    props.editCommand(event.target.value);
   }
 
   function setMacroTitle(event) {
-    props.editTitle(event.nativeEvent.data);
+    props.editTitle(event.target.value);
   }
 
   function save() {
