@@ -22,12 +22,20 @@ function App() {
   }
 
   function rollCommand(command) {
-    const split = command.text.split('/roll ')[1].split(/([+-/*])/g);
+    const split = command.split('/roll ')[1].split(/([+-/*])/g);
     let calculation = '';
+
     split.forEach(element => {
       if (element.toLowerCase().charAt(0) === 'd') {
         element = rollTheDice(element.substring(1));
+      } else if (element.split('d').length === 2) {
+        const multiRoll = element.split('d');
+        element = 0;
+        for (let i = 0; i < multiRoll[0]; i++) {
+          element += rollTheDice(multiRoll[1]);
+        }
       }
+
       calculation += element;
     });
     return evaluate(calculation);
@@ -35,7 +43,7 @@ function App() {
 
   function chatWrite(message) {
     if (message.text.split('/roll ')[1]) {
-      updateChat({ text: rollCommand(message), type: 'roll' });
+      updateChat({ text: rollCommand(message.text), type: 'roll' });
     } else {
       updateChat(message);
     }

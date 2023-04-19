@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import MacroEditMenu from './macroEditMenu.js';
 import PropTypes from 'prop-types';
-import Macro from './macros/macro.json';
 import './css/macroButton.css';
 
 function MacroButton(props) {
+  const Macro = JSON.parse(localStorage.getItem('Macro'));
+
   const [macroTitle, setMacroTitle] = useState(Macro.title);
   const [macroCommand, setMacroCommand] = useState(Macro.command);
   const [showMacroEditMenu, setShowMacroEditMenu] = useState(false);
@@ -40,8 +41,8 @@ function MacroButton(props) {
       command: macroCommand,
     };
     newMacro = JSON.stringify(newMacro);
-    // TODO figure out local storage
-    console.log('boop', macroTitle, macroCommand, Macro, newMacro);
+
+    localStorage.setItem('Macro', newMacro);
     closeMacroEditMenu();
   }
 
