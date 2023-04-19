@@ -34,6 +34,17 @@ function MacroButton(props) {
     setMacroCommand(newCommand);
   }
 
+  function saveMacro() {
+    let newMacro = {
+      title: macroTitle,
+      command: macroCommand,
+    };
+    newMacro = JSON.stringify(newMacro);
+    // TODO figure out local storage
+    console.log('boop', macroTitle, macroCommand, Macro, newMacro);
+    closeMacroEditMenu();
+  }
+
   return (
     <div className='macroContainer'>
         <button className='macroButton' onContextMenu={handleRightClick} onClick={executeMacro}>
@@ -53,6 +64,7 @@ function MacroButton(props) {
               macroCommand={macroCommand}
               editCommand={editCommand}
               editTitle={editTitle}
+              saveMacro={saveMacro}
             />
         )}
     </div>

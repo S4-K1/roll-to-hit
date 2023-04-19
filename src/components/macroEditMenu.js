@@ -16,7 +16,7 @@ function MacroEditMenu(props) {
   }
 
   function save() {
-
+    props.saveMacro();
   }
 
   return (
@@ -60,6 +60,7 @@ MacroEditMenu.propTypes = {
   macroCommand: PropTypes.string,
   editTitle: PropTypes.func,
   editCommand: PropTypes.func,
+  saveMacro: PropTypes.func,
 };
 
 export default MacroEditMenu;
