@@ -7,6 +7,14 @@ function MacroEditMenu(props) {
     props.closeMacroEditMenu();
   }
 
+  function setMacroCommand(event) {
+    props.editCommand(event.nativeEvent.data);
+  }
+
+  function setMacroTitle(event) {
+    props.editTitle(event.nativeEvent.data);
+  }
+
   function save() {
 
   }
@@ -22,6 +30,7 @@ function MacroEditMenu(props) {
                     className='inputBox'
                     placeholder='No name written'
                     value={props.macroTitle}
+                    onChange={setMacroTitle}
                 />
             </div>
             <div className='editBox'>
@@ -31,6 +40,7 @@ function MacroEditMenu(props) {
                     className='inputBox'
                     placeholder='No macro written'
                     value={props.macroCommand}
+                    onChange={setMacroCommand}
                     rows={4}
                     cols={40}
                 />
@@ -48,6 +58,8 @@ MacroEditMenu.propTypes = {
   closeMacroEditMenu: PropTypes.func,
   macroTitle: PropTypes.string,
   macroCommand: PropTypes.string,
+  editTitle: PropTypes.func,
+  editCommand: PropTypes.func,
 };
 
 export default MacroEditMenu;

@@ -5,10 +5,8 @@ import Macro from './macros/macro.json';
 import './css/macroButton.css';
 
 function MacroButton(props) {
-  const [macro] = useState(Macro);
-
-  console.log('macro: ', Macro);
-
+  const [macroTitle, setMacroTitle] = useState(Macro.title);
+  const [macroCommand, setMacroCommand] = useState(Macro.command);
   const [showMacroEditMenu, setShowMacroEditMenu] = useState(false);
 
   function executeMacro() {
@@ -28,8 +26,12 @@ function MacroButton(props) {
     setShowMacroEditMenu(false);
   }
 
-  function editMacro() {
-    console.log(Macro);
+  function editTitle(newTitle) {
+    setMacroTitle(newTitle);
+  }
+
+  function editCommand(newCommand) {
+    setMacroCommand(newCommand);
   }
 
   return (
@@ -47,9 +49,10 @@ function MacroButton(props) {
         {showMacroEditMenu && (
             <MacroEditMenu
               closeMacroEditMenu={closeMacroEditMenu}
-              editMacro={editMacro}
-              macroTitle={macro.title}
-              macroCommand={macro.command}
+              macroTitle={macroTitle}
+              macroCommand={macroCommand}
+              editCommand={editCommand}
+              editTitle={editTitle}
             />
         )}
     </div>
