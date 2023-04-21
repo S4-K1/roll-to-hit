@@ -6,8 +6,8 @@ import './css/macroButton.css';
 function MacroButton(props) {
   const Macro = JSON.parse(localStorage.getItem('Macro'));
 
-  const [macroTitle, setMacroTitle] = useState(Macro.title);
-  const [macroCommand, setMacroCommand] = useState(Macro.command);
+  const [macroTitle, setMacroTitle] = useState(Macro ? Macro.title : 'Unnamed Macro');
+  const [macroCommand, setMacroCommand] = useState(Macro ? Macro.command : '');
   const [showMacroEditMenu, setShowMacroEditMenu] = useState(false);
 
   function executeMacro() {
@@ -56,7 +56,7 @@ function MacroButton(props) {
         </div>
       )}
       <button className='macroButton' onContextMenu={handleRightClick} onClick={executeMacro}>
-        {Macro.title}
+        {macroTitle}
       </button>
       {showMacroEditMenu && (
         <MacroEditMenu
